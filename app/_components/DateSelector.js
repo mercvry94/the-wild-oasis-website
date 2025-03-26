@@ -2,6 +2,7 @@
 
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
+import { useReservation } from "./ReservationContext";
 
 function isAlreadyBooked(range, datesArr) {
   return (
@@ -14,7 +15,9 @@ function isAlreadyBooked(range, datesArr) {
 }
 
 function DateSelector({ settings, cabin, bookedDates }) {
+  const { range, setRange } = useReservation();
   // CHANGE
+
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
@@ -31,6 +34,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
           months: { width: "30rem" },
           day: { width: "32px", height: "30px" },
           day_button: { width: "30px", height: "30px" },
+          day_hover: { color: "orange" },
         }}
         mode="range"
         onSelect={setRange}
