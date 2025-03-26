@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
@@ -15,7 +14,6 @@ function isAlreadyBooked(range, datesArr) {
 }
 
 function DateSelector({ settings, cabin, bookedDates }) {
-  const [range, setRange] = useState({ from: undefined, to: undefined });
   // CHANGE
   const regularPrice = 23;
   const discount = 23;
@@ -35,7 +33,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
           day_button: { width: "30px", height: "30px" },
         }}
         mode="range"
-        onSelect={(range) => setRange(range)}
+        onSelect={setRange}
         min={minBookingLength + 1}
         max={maxBookingLength}
         selected={range}
