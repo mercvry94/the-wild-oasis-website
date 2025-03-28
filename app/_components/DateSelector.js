@@ -15,7 +15,7 @@ function isAlreadyBooked(range, datesArr) {
 }
 
 function DateSelector({ settings, cabin, bookedDates }) {
-  const { range, setRange } = useReservation();
+  const { range, setRange, resetRange } = useReservation();
   // CHANGE
 
   const regularPrice = 23;
@@ -33,8 +33,10 @@ function DateSelector({ settings, cabin, bookedDates }) {
         styles={{
           months: { width: "30rem" },
           day: { width: "32px", height: "30px" },
-          day_button: { width: "30px", height: "30px" },
-          day_hover: { color: "orange" },
+          day_button: {
+            width: "30px",
+            height: "30px",
+          },
         }}
         mode="range"
         onSelect={setRange}
@@ -79,7 +81,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
         {range.from || range.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
-            onClick={() => resetRange()}
+            onClick={resetRange}
           >
             Clear
           </button>
